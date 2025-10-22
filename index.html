@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Planejamento | Black Week Woca 2025</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Chosen Palette: Warm Neutrals & Subtle Coral -->
+    <!-- Application Structure Plan: A single-page dashboard with a fixed sidebar navigation was chosen to present the marketing plan. This structure allows non-linear exploration, enabling stakeholders (like the board) to quickly jump to sections of interest such as 'Ofertas' or 'Canais'. This is more efficient and user-friendly than a linear document, facilitating discussion and comprehension. Key interactions include smooth-scroll navigation and an interactive chart to visualize the value of the offers. -->
+    <!-- Visualization & Content Choices: 
+        - Report Info: Campaign Timeline -> Goal: Show Change/Process -> Viz: Horizontal Timeline Diagram -> Interaction: Visual progression -> Justification: More intuitive and engaging than a list of dates -> Method: HTML/Tailwind.
+        - Report Info: Plan Offers (Buy 1, Get 2) -> Goal: Compare/Show Value -> Viz: Bar Chart -> Interaction: Hover tooltips showing 'Paid' vs. 'Received' value -> Justification: Visually quantifies the benefit for the customer, making the offer's value immediately apparent -> Library: Chart.js/Canvas.
+        - Report Info: Core Strategy & Channels -> Goal: Inform/Organize -> Viz: Icon-driven cards and grid layouts -> Interaction: Clear navigation and sectioning -> Justification: Breaks down complex information into digestible blocks, improving readability -> Method: HTML/Tailwind.
+    -->
+    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #fefcfb;
+            color: #3f3f46;
+        }
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 300px;
+            max-height: 350px;
+        }
+        @media (min-width: 768px) {
+            .chart-container {
+                height: 350px;
+            }
+        }
+    </style>
+</head>
+<body class="antialiased">
+    <div class="relative min-h-screen md:flex">
+        <aside class="z-20 h-screen sticky top-0 md:w-64 w-full py-4 px-6 md:px-4 bg-white md:bg-transparent border-b md:border-r border-gray-200/80">
+            <div class="flex items-center gap-3 mb-8">
+                <div class="bg-[#ee594a]/20 text-[#ee594a] p-2 rounded-lg">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" />
+                    </svg>
+                </div>
+                <h1 class="text-xl font-bold text-zinc-800">Black Week 2025</h1>
+            </div>
+            <nav class="hidden md:flex flex-col space-y-2">
+                <a href="#visao-geral" class="nav-link text-zinc-600 hover:bg-red-50 hover:text-[#ee594a] px-4 py-2 rounded-md font-medium transition-colors duration-150">Visão Geral</a>
+                <a href="#cronograma" class="nav-link text-zinc-600 hover:bg-red-50 hover:text-[#ee594a] px-4 py-2 rounded-md font-medium transition-colors duration-150">Cronograma</a>
+                <a href="#estrategia" class="nav-link text-zinc-600 hover:bg-red-50 hover:text-[#ee594a] px-4 py-2 rounded-md font-medium transition-colors duration-150">Estratégia Central</a>
+                <a href="#ofertas" class="nav-link text-zinc-600 hover:bg-red-50 hover:text-[#ee594a] px-4 py-2 rounded-md font-medium transition-colors duration-150">As Ofertas</a>
+                <a href="#canais" class="nav-link text-zinc-600 hover:bg-red-50 hover:text-[#ee594a] px-4 py-2 rounded-md font-medium transition-colors duration-150">Canais e Ações</a>
+            </nav>
+        </aside>
+
+        <main class="flex-1 p-6 md:p-10">
+            <section id="visao-geral" class="mb-16">
+                <h2 class="text-3xl font-bold text-zinc-800 mb-4">⚡ Visão Geral da Campanha</h2>
+                <p class="text-zinc-600 max-w-3xl mb-8">
+                    Esta seção apresenta o panorama do planejamento estratégico para a Black Week 2025. O foco principal é a renovação da nossa abordagem de campanha, migrando de um modelo baseado em descontos para uma estratégia de **agregação de valor**, posicionando o Woca como uma ferramenta de elite e preparando o terreno para o "Woca 2.0".
+                </p>
+                <div class="grid md:grid-cols-3 gap-6">
+                    <div class="bg-white p-6 rounded-xl border border-gray-200/80">
+                        <h3 class="font-bold text-lg text-zinc-800 mb-2">Inovação e Novidade</h3>
+                        <p class="text-zinc-600 text-sm">Romper com o ciclo de campanhas repetitivas, gerando surpresa e um novo senso de urgência na base de clientes.</p>
+                    </div>
+                    <div class="bg-white p-6 rounded-xl border border-gray-200/80">
+                        <h3 class="font-bold text-lg text-zinc-800 mb-2">Agregação de Valor</h3>
+                        <p class="text-zinc-600 text-sm">O foco deixa de ser apenas o preço e passa a ser o valor percebido do produto, destacando as evoluções e o futuro do Woca.</p>
+                    </div>
+                    <div class="bg-white p-6 rounded-xl border border-gray-200/80">
+                        <h3 class="font-bold text-lg text-zinc-800 mb-2">Posicionamento de Elite</h3>
+                        <p class="text-zinc-600 text-sm">Elevar a marca, posicionando o Woca como a escolha inteligente para profissionais que buscam a melhor tecnologia e performance.</p>
+                    </div>
+                </div>
+                 <div class="mt-6 bg-amber-50 border-l-4 border-amber-400 p-4 rounded-r-lg">
+                    <p class="text-sm text-amber-800"><span class="font-bold">Nomes sugeridos:</span> Black Woca ou Woca Week.</p>
+                </div>
+            </section>
+
+            <section id="cronograma" class="mb-16">
+                <h2 class="text-3xl font-bold text-zinc-800 mb-4">🗓️ Cronograma da Campanha</h2>
+                <p class="text-zinc-600 max-w-3xl mb-12">
+                    A campanha foi estruturada em três fases distintas para construir expectativa, maximizar a conversão durante o período principal e capturar os clientes indecisos ao final. Este cronograma visual ilustra o fluxo planejado de ações e comunicação ao longo de novembro e início de dezembro.
+                </p>
+                <div class="relative">
+                    <div class="absolute left-1/2 -ml-0.5 w-1 h-full bg-gray-200 hidden md:block"></div>
+                    <div class="space-y-12">
+                        <div class="md:flex items-center md:space-x-8">
+                            <div class="md:w-1/2"></div>
+                            <div class="md:w-1/2">
+                                <div class="bg-white p-6 rounded-xl border border-gray-200/80">
+                                    <p class="text-sm font-semibold text-[#ee594a]">FASE 1: AQUECIMENTO</p>
+                                    <p class="text-lg font-bold text-zinc-800">17 a 23 de Novembro</p>
+                                    <p class="text-zinc-600 mt-2 text-sm">Fase de expectativa e captura de leads. Comunicação focada em teasers sobre as novidades do "Woca 2.0" para gerar curiosidade.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="md:flex items-center md:space-x-8">
+                            <div class="md:w-1/2">
+                                <div class="bg-white p-6 rounded-xl border border-gray-200/80">
+                                    <p class="text-sm font-semibold text-[#ee594a]">FASE 2: CAMPANHA ATIVA</p>
+                                    <p class="text-lg font-bold text-zinc-800">24 a 30 de Novembro</p>
+                                    <p class="text-zinc-600 mt-2 text-sm">Lançamento oficial das ofertas. Comunicação intensiva em todos os canais com as promoções dos planos Anual e Quadrimestral.</p>
+                                </div>
+                            </div>
+                            <div class="md:w-1/2"></div>
+                        </div>
+                         <div class="md:flex items-center md:space-x-8">
+                            <div class="md:w-1/2"></div>
+                            <div class="md:w-1/2">
+                                <div class="bg-white p-6 rounded-xl border border-gray-200/80">
+                                    <p class="text-sm font-semibold text-[#ee594a]">FASE 3: SEMANA BÔNUS</p>
+                                    <p class="text-lg font-bold text-zinc-800">01 a 07 de Dezembro</p>
+                                    <p class="text-zinc-600 mt-2 text-sm">Última chamada para indecisos. Foco em urgência para garantir as condições especiais antes do reajuste de valor com o Woca 2.0.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="estrategia" class="mb-16">
+                <h2 class="text-3xl font-bold text-zinc-800 mb-4">🧭 Estratégia Central: O Woca 2.0</h2>
+                <p class="text-zinc-600 max-w-3xl mb-8">
+                    O coração da campanha é o conceito "Woca 2.0". Em vez de apenas vender uma assinatura, estamos vendendo acesso antecipado e garantido a uma nova era da ferramenta. Esta seção detalha a mensagem, o posicionamento e as novidades que serão usadas como isca para atrair e converter clientes.
+                </p>
+                <div class="bg-white p-8 rounded-xl border border-gray-200/80">
+                    <p class="text-center text-zinc-500 font-medium mb-2">Mensagem Central</p>
+                    <blockquote class="text-center text-xl md:text-2xl font-semibold text-zinc-800 italic">
+                        "Garanta hoje seu acesso à revolução do Woca 2.0, pagando o preço de 2025."
+                    </blockquote>
+                    <hr class="my-6 border-gray-200">
+                    <h4 class="font-bold text-lg text-zinc-800 mb-4">Novidades de 2026 a serem exploradas:</h4>
+                    <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 text-sm">
+                        <div class="bg-gray-50 p-4 rounded-lg">
+                            <p class="font-semibold text-zinc-700">🚀 Atualização de Performance</p>
+                            <p class="text-zinc-600">Woca mais rápido e fluido.</p>
+                        </div>
+                        <div class="bg-gray-50 p-4 rounded-lg">
+                            <p class="font-semibold text-zinc-700">📱 Acesso Mobile Aprimorado</p>
+                            <p class="text-zinc-600">Experiência otimizada para celulares.</p>
+                        </div>
+                        <div class="bg-gray-50 p-4 rounded-lg">
+                            <p class="font-semibold text-zinc-700">💧 Woca Hidráulica</p>
+                            <p class="text-zinc-600">Nova vertical de projetos.</p>
+                        </div>
+                        <div class="bg-gray-50 p-4 rounded-lg">
+                            <p class="font-semibold text-zinc-700">🛠️ Woca Serviços</p>
+                            <p class="text-zinc-600">Ferramentas para gestão de serviços.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="ofertas" class="mb-16">
+                 <h2 class="text-3xl font-bold text-zinc-800 mb-4">🎁 As Ofertas da Black Week</h2>
+                 <p class="text-zinc-600 max-w-3xl mb-8">
+                    As ofertas foram desenhadas para comunicar valor e um benefício de longo prazo, em vez de um simples desconto. A estrutura "Pague X, Leve 2X" reforça a ideia de que o cliente está fazendo um investimento inteligente no futuro. O gráfico abaixo ilustra a vantagem de cada plano.
+                </p>
+                <div class="grid lg:grid-cols-5 gap-8 items-center">
+                    <div class="lg:col-span-2 space-y-6">
+                        <div class="bg-white p-6 rounded-xl border-2 border-[#ee594a] shadow-lg shadow-red-500/10">
+                            <p class="text-xs font-bold uppercase text-[#ee594a] tracking-wider">Prioridade</p>
+                            <h3 class="text-xl font-bold text-zinc-800 mt-1">Plano Anual</h3>
+                            <p class="text-3xl font-bold text-zinc-800 my-3">Pague 1 ano, Leve 2 anos</p>
+                            <p class="text-zinc-600 text-sm">Acesso a todas as novidades de 2026 sem custo adicional. A melhor oferta para garantir o futuro do Woca.</p>
+                        </div>
+                         <div class="bg-white p-6 rounded-xl border border-gray-200/80">
+                            <h3 class="text-xl font-bold text-zinc-800">Plano Quadrimestral</h3>
+                            <p class="text-2xl font-bold text-zinc-800 my-3">Pague 4 meses, Leve 8 meses</p>
+                            <p class="text-zinc-600 text-sm">Uma alternativa flexível para quem busca um compromisso menor mas ainda quer aproveitar um grande benefício.</p>
+                        </div>
+                    </div>
+                    <div class="lg:col-span-3">
+                        <div class="bg-white p-4 sm:p-6 rounded-xl border border-gray-200/80">
+                             <div class="chart-container">
+                                <canvas id="ofertasChart"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="canais">
+                <h2 class="text-3xl font-bold text-zinc-800 mb-4">📢 Canais e Ações Estratégicas</h2>
+                <p class="text-zinc-600 max-w-3xl mb-8">
+                    Para garantir o sucesso da campanha, ativaremos um mix de canais principais, responsáveis pelo volume de comunicação, e ações complementares focadas em engajamento e prova social. Esta abordagem integrada visa maximizar o alcance e a credibilidade da nossa mensagem.
+                </p>
+                <div class="space-y-8">
+                    <div>
+                        <h3 class="text-xl font-bold text-zinc-800 mb-4">Canais Principais</h3>
+                        <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
+                            <div class="bg-white p-5 rounded-xl border border-gray-200/80 text-center">
+                               <span class="text-3xl">✉️</span>
+                                <p class="font-semibold mt-2">E-mail Marketing</p>
+                            </div>
+                            <div class="bg-white p-5 rounded-xl border border-gray-200/80 text-center">
+                               <span class="text-3xl">📱</span>
+                                <p class="font-semibold mt-2">Redes Sociais</p>
+                            </div>
+                            <div class="bg-white p-5 rounded-xl border border-gray-200/80 text-center">
+                               <span class="text-3xl">💬</span>
+                                <p class="font-semibold mt-2">WhatsApp</p>
+                            </div>
+                            <div class="bg-white p-5 rounded-xl border border-gray-200/80 text-center">
+                               <span class="text-3xl">📄</span>
+                                <p class="font-semibold mt-2">Landing Page</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-bold text-zinc-800 mb-4">Ações Complementares de Engajamento</h3>
+                        <div class="bg-white p-6 rounded-xl border border-gray-200/80 space-y-6">
+                            <div class="flex items-start gap-4 p-4 rounded-lg bg-red-50/50 border border-red-100">
+                                <div class="flex-shrink-0 bg-[#ee594a]/20 text-[#ee594a] p-3 rounded-lg">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118L2.98 10.1c-.783-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z" />
+                                    </svg>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-lg text-zinc-800 mb-1">Marketing de Influência</h4>
+                                    <p class="text-zinc-600 text-sm">Aproveitar a proximidade gerada pela editoria "Conexões Elétricas" para propor parcerias. A mecânica é simples: cada influenciador participante receberá um <span class="font-bold text-zinc-900">cupom de 10% de desconto</span> (cumulativo com a oferta principal) para divulgar, válido para os planos Anual e Quadrimestral.</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start gap-4 p-4 rounded-lg bg-red-50/50 border border-red-100">
+                                <div class="flex-shrink-0 bg-[#ee594a]/20 text-[#ee594a] p-3 rounded-lg">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z" />
+                                    </svg>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-lg text-zinc-800 mb-1">YouTube Live</h4>
+                                    <p class="text-zinc-600 text-sm">O evento principal será em <span class="font-bold text-zinc-900">27/11 (Quinta-feira), às 19h30</span>. O tema será a apresentação do "Woca 2.0", com revisão de projetos e tira-dúvidas. Como estratégia de aquecimento, teremos lives semanais em novembro para gerar antecipação.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const ctx = document.getElementById('ofertasChart').getContext('2d');
+            const ofertasChart = new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: ['Plano Quadrimestral', 'Plano Anual'],
+                    datasets: [{
+                        label: 'Meses Pagos',
+                        data: [4, 12],
+                        backgroundColor: 'rgba(238, 89, 74, 0.2)',
+                        borderColor: 'rgba(238, 89, 74, 1)',
+                        borderWidth: 1
+                    }, {
+                        label: 'Meses de Acesso Total',
+                        data: [8, 24],
+                        backgroundColor: 'rgba(238, 89, 74, 0.7)',
+                        borderColor: 'rgba(238, 89, 74, 1)',
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        title: {
+                            display: true,
+                            text: 'Comparativo de Valor: Meses Pagos vs. Acesso Total',
+                            font: {
+                                size: 16,
+                                weight: 'bold'
+                            },
+                            color: '#3f3f46',
+                            padding: {
+                                top: 10,
+                                bottom: 20
+                            }
+                        },
+                        tooltip: {
+                            callbacks: {
+                                label: function(context) {
+                                    let label = context.dataset.label || '';
+                                    if (label) {
+                                        label += ': ';
+                                    }
+                                    if (context.parsed.y !== null) {
+                                        label += context.parsed.y + ' meses';
+                                    }
+                                    return label;
+                                }
+                            }
+                        }
+                    },
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            title: {
+                                display: true,
+                                text: 'Nº de Meses'
+                            }
+                        }
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+</html>
+
+
